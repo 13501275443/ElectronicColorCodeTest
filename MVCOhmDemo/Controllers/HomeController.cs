@@ -30,7 +30,6 @@ namespace MVCOhmDemo.Controllers
             string multiplierColor = formCollection["BandCColor"];
             string toleranceColor = formCollection["BandDColor"];
             var model = new COhmModel(firstSignificantFigure, secondSignificantFigure, multiplierColor, toleranceColor);
-            model.CalculateOhmValue(firstSignificantFigure, secondSignificantFigure, multiplierColor, toleranceColor);
             return View(model);
         }
 

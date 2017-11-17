@@ -14,9 +14,6 @@ namespace MVCOhmDemo.Models
         {
             m_OhmValueCalculator = new COhmValueCalculator();
             SetupColorBand("BLACK", "BLACK", "BLACK", string.Empty);
-
-            m_OhmValue = 0.0f;
-            
         }
 
         public COhmModel(string firstSignificant, string secondSignificant, string multiplierColor, string toleranceColor)
@@ -24,10 +21,10 @@ namespace MVCOhmDemo.Models
             m_OhmValueCalculator = new COhmValueCalculator();
             SetupColorBand(firstSignificant, secondSignificant, multiplierColor, toleranceColor);
         }
-        public void CalculateOhmValue(string firstSignificant, string secondSignificant, string multiplierColor, string toleranceColor)
-        {
-            m_OhmValue = m_OhmValueCalculator.CalculateOhmValue(firstSignificant, secondSignificant, multiplierColor, toleranceColor, out m_ToleranceRange);
-        }
+        //public void CalculateOhmValue(string firstSignificant, string secondSignificant, string multiplierColor, string toleranceColor)
+        //{
+        //    m_OhmValue = m_OhmValueCalculator.CalculateOhmValue(firstSignificant, secondSignificant, multiplierColor, toleranceColor, out m_ToleranceRange);
+        //}
         public string GetOhmValue()
         {
             return m_OhmValue.ToString();
@@ -83,7 +80,9 @@ namespace MVCOhmDemo.Models
             {
                 list.Add(key);
             }
-            ToleranceList = new SelectList(list, toleranceColor); 
+            ToleranceList = new SelectList(list, toleranceColor);
+
+            m_OhmValue = m_OhmValueCalculator.CalculateOhmValue(firstSignificant, secondSignificant, multiplierColor, toleranceColor, out m_ToleranceRange);
             return ;
 
         }
