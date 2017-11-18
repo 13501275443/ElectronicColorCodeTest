@@ -2,45 +2,74 @@
     <section class="featured">
         <div class="content-wrapper">
             <hgroup class="title">
-                <h1>Welcome to Ohm Value Calculator Web Page!</h1>                
+                <h1>Welcome to Ohm Value Calculator Web Page!</h1>
             </hgroup>
-            <p>
-                ASP.NET Web API allows you to expose your applications, data and services to the
-                web directly over HTTP.
-            </p>
-            <p>
-                To learn more about ASP.NET Web API visit the
-                <a href="http://go.microsoft.com/fwlink/?LinkID=238195" title="ASP.NET Web API Website">ASP.NET Web API Website</a>.
-                The page features <mark>videos, tutorials, and samples</mark> to help you get the most from ASP.NET Web API.
-                If you have any questions about ASP.NET Web API, visit
-                <a href="http://go.microsoft.com/fwlink/?LinkID=238196" title="ASP.NET Web API Forum">our forums</a>.
-            </p>
         </div>
     </section>
     <section class="content-wrapper main-content clear-fix">
         @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { id = "Form1" }))
         {
             <div class="BandColor">
-                @model MVCOhmDemo.Models.COhmModel
-                <hr>
-                <label for="FirstSignificantFigureBand">First Significant Figure Band</label>
-                @Html.DropDownList("BandAColor", Model.FirstSignificantFigureList, new { @onchange = "this.form.submit();" })
-                <br>
-                <label for="SecondSignificantFigureBand">Second Significant Figure Band</label>
-                @Html.DropDownList("BandBColor", Model.SecondSignificantFigureList, new { @onchange = "this.form.submit();" })
-                <br>
-                <label for="DecimalMultiplierBand">Decimal Multiplier Band</label>
-                @Html.DropDownList("BandCColor", Model.MultiplierList, new { @onchange = "this.form.submit();" })
-                <br>
-                <label for="ToleranceValueBand">Tolerance Value Band</label>
-                @Html.DropDownList("BandDColor", Model.ToleranceList, new { @onchange = "this.form.submit();" })
+                <table>
+                    <tr>
+                        @model MVCOhmDemo.Models.COhmModel
+                        <td>
+                            <!-- -->
+                            <label for="FirstSignificantFigureBand">First Significant</label>
+                            @Html.DropDownList("BandAColor", Model.FirstSignificantFigureList, new { @onchange = "this.form.submit();" })
+                        </td>
+                        <td>
+                            <label for="SecondSignificantFigureBand">Second Significant</label>
+                            @Html.DropDownList("BandBColor", Model.SecondSignificantFigureList, new { @onchange = "this.form.submit();" })
+                        </td>
+                        <td>
+                            <label for="DecimalMultiplierBand">Decimal Multiplier</label>
+                            @Html.DropDownList("BandCColor", Model.MultiplierList, new { @onchange = "this.form.submit();" })
+                        </td>
+                        <td>
+                            <label for="ToleranceValueBand">Tolerance Value</label>
+                            @Html.DropDownList("BandDColor", Model.ToleranceList, new { @onchange = "this.form.submit();" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style='background-color: @Model.BandAColor ;'>&nbsp&nbsp&nbsp&nbsp</span>
+                        </td>
+                        <td>
+                            <span style='background-color: @Model.BandBColor ;'>&nbsp&nbsp&nbsp&nbsp</span>
+                        </td>
+                        <td>
+                            <span style='background-color: @Model.BandCColor ;'>&nbsp&nbsp&nbsp&nbsp</span>
+                        </td>
+                        <td>
+                            <span style='background-color: @Model.BandDColor ;'>&nbsp&nbsp&nbsp&nbsp</span>
+                        </td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+
+                </table>
             </div>
             <br />
-            <div class="OhmFinal">
-                <strong>Resistance Value: @Model.GetOhmValue() ohms(Ω)</strong>
+            <br />
+            <br />
+            <div class="OhmResult">
+                <table>
+                    <tr>
+                        <td>
+                            <span style="font-size:24px;"><strong>Resistance Value: @Model.OhmValue ohms(Ω)</strong> </span>
+                        </td>
+                        <td>
+                            <span style="font-size:24px;"><strong>Tolerance Range:  +/-@Model.ToleranceRange   </strong></span>
+                        </td>
+
+                    </tr>
+                </table>
             </div>
         }
 
 
-</section>
+    </section>
 </div>
